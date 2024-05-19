@@ -1,0 +1,49 @@
+body{
+  background-color: rgb(45, 43, 43);
+  color: beige
+}
+.myContainer{
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+.row{
+  width: 500px;
+}
+.mainContent{
+  text-align: center;
+}
+.addButton{
+  border: none;
+  border-radius: 5px;
+  background-color: darkgreen;
+  color: whitesmoke;
+  font-size: 16px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.addButton:hover{
+  opacity: 30%;
+  cursor: pointer;
+}
+.ul{
+  width: 1000px;
+}
+.listComponent{
+  display: flex;
+  justify-content: space-between;
+  border: 2px darkblue solid;
+  background-color: rgb(55, 68, 247);
+  border-radius: 5px;
+  padding: 5px 10px;
+  align-items: center;
+  font-size: 18px;
+  margin: 10px;
+}
+.btn{
+  margin: 5px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+}
