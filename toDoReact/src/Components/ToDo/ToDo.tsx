@@ -1,8 +1,11 @@
 import { useState } from "react"
+import { FaRegSquare } from "react-icons/fa";
+import { FaRegCheckSquare } from "react-icons/fa";
 
 interface ToDoItem{
     id: number
     todo: string
+    completed: boolean
 }
 const ToDo = () => {
     // help managing state, UseState for input, and UseState for list
@@ -21,14 +24,18 @@ const ToDo = () => {
         const newToDo:ToDoItem = {
 
             id: Math.random(),
-            todo: newItem
+            todo: newItem,
+            completed: false
         }
         setList([...list, newToDo]);
         setInput("");
         console.log(list)
     }
-    const completeFunction =(item:number) => {
-        console.log(item)
+    const completeFunctionTrue =(item:number) => {
+        setList(list.map(lists => lists.id === item ? {...lists, completed:true} : lists))
+    }
+    const completeFunctionFalse =(item:number) => {
+        setList(list.map(lists => lists.id === item ? {...lists, completed:false} : lists))
     }
     const deleteItem = (item:number) => {   
         console.log(item)
@@ -44,9 +51,10 @@ const ToDo = () => {
         // console.log(list[0].id)
         setList(list.filter(newList => newList.id !== item))
     }
-    const handleUpdate = (itemNumber: number) => {
-        setList(list.map(lists => lists.id == itemNumber ? [{...list, todo: editInput}] : lists))
-    }
+    // const handleUpdate = (itemNumber: number) => {
+    //     setList(list.map(lists => lists.id == itemNumber ? [{...list, todo: editInput}] : lists))
+    // }
+        
   return (
     <>
         <div className="myContainer">
@@ -61,13 +69,14 @@ const ToDo = () => {
             <ul>
                 {list.map(item => (
                     <li key={item.id} className="listComponent">
+                        {item.completed ? <FaRegCheckSquare onClick={() => completeFunctionFalse(item.id)} /> : <FaRegSquare  onClick={() => completeFunctionTrue(item.id)}/>}
                         {item.todo}
                         <div>
                         <button className="btn" onClick={() => {deleteItem(item.id)}}>X</button>
-                        <button className="btn" onClick={()=> completeFunction(item.id)}>Complete</button>
+                        {/* <button className="btn" onClick={()=> completeFunction(item.id)}>Complete</button> */}
                         </div>
                         <input type="text" value={editInput} onChange={(e) => setEditInput(e.target.value)} />
-                        <button className="addButton" onClick={() => handleUpdate(item.id)}> Edit</button>
+                        {/* <button className="addButton" onClick={() => handleUpdate(item.id)}> Edit</button> */}
                         
                     </li>
                 ))}
