@@ -8,7 +8,8 @@ body{
   margin-top: 10%;
 }
 .row{
-  width: 500px;
+  min-width: 500px;
+  max-width: 800px;
 }
 .mainContent{
   text-align: center;
